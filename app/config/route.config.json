@@ -1,0 +1,379 @@
+{
+    "routes": [
+
+        {
+            "controller": "../components/user/controller/user.js",
+            "route": "/api/v1/user/login",
+            "method": "post",
+            "action": "login",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": false,
+            "verifyUserId": false
+        },
+        {
+            "controller": "../components/plan/controller/plan.js",
+            "route": "/api/v1/plan/create",
+            "method": "post",
+            "action": "createPlan",
+            "secured": true,
+            "isAdmin": true,
+            "isUser": false,
+            "verifyUserId": false
+        },
+        {
+            "controller": "../components/plan/controller/plan.js",
+            "route": "/api/v1/plan/update/:planId",
+            "method": "put",
+            "action": "updatePlan",
+            "secured": true,
+            "isAdmin": true,
+            "isUser": false,
+            "verifyUserId": false
+        },
+        {
+            "controller": "../components/plan/controller/plan.js",
+            "route": "/api/v1/plan/delete/:planId",
+            "method": "delete",
+            "action": "deletePlan",
+            "secured": true,
+            "isAdmin": true,
+            "isUser": false,
+            "verifyUserId": false
+        },
+        {
+            "controller": "../components/plan/controller/plan.js",
+            "route": "/api/v1/plan/get",
+            "method": "get",
+            "action": "getAllPlans",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": false,
+            "verifyUserId": false
+        },
+        {
+            "controller": "../components/plan/controller/plan.js",
+            "route": "/api/v1/plan/get/:planId",
+            "method": "get",
+            "action": "getPlanById",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": false,
+            "verifyUserId": false
+        },
+        {
+            "controller": "../components/user/controller/user.js",
+            "route": "/api/v1/user/create-admin",
+            "method": "post",
+            "action": "createAdminUser",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": false,
+            "verifyUserId": false 
+        },
+        {
+            "controller": "../components/user/controller/user.js",
+            "route": "/api/v1/user/create",
+            "method": "post",
+            "action": "createUser",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": false,
+            "verifyUserId": false 
+        },
+        {
+            "controller": "../components/user/controller/user.js",
+            "route": "/api/v1/user/update/:userId",
+            "method": "put",
+            "action": "updateUser",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": true,
+            "verifyUserId": true 
+        },
+        {
+            "controller": "../components/user/controller/user.js",
+            "route": "/api/v1/user/delete/:userId",
+            "method": "delete",
+            "action": "deleteUser",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": true,
+            "verifyUserId": true 
+        },
+        {
+            "controller": "../components/user/controller/user.js",
+            "route": "/api/v1/user/get",
+            "method": "get",
+            "action": "getAllUsers",
+            "secured": true,
+            "isAdmin": true,
+            "isUser": false,
+            "verifyUserId": false 
+        },
+        {
+            "controller": "../components/user/controller/user.js",
+            "route": "/api/v1/user/get/:userId",
+            "method": "get",
+            "action": "getUserById",
+            "secured": true,
+            "isAdmin": true,
+            "isUser": false,
+            "verifyUserId": false 
+        },
+        {
+            "controller": "../components/usersPlans/controller/usersPlans.js",
+            "route": "/api/v1/user/buy-plan/:userId",
+            "method": "post",
+            "action": "buyPlan",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": true,
+            "verifyUserId": true 
+        },
+        {
+            "controller": "../components/usersPlans/controller/usersPlans.js",
+            "route": "/api/v1/user/:userId/plans",
+            "method": "get",
+            "action": "getPlansByUserId",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": false,
+            "verifyUserId": false 
+        },
+        {
+            "controller": "../components/url/controller/url.js",
+            "route": "/api/v1/user/:userId/create-url",
+            "method": "post",
+            "action": "createShortUrl",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": true,
+            "verifyUserId": true 
+        },
+        
+        {
+            "controller": "../components/url/controller/url.js",
+            "route": "/api/v1/user/:userId/renew/:id",
+            "method": "post",
+            "action": "renewUrls",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": true,
+            "verifyUserId": true 
+        },
+        {
+            "controller": "../components/url/controller/url.js",
+            "route": "/api/v1/user/:userId/url",
+            "method": "get",
+            "action": "getUsersAllUrl",
+            "secured": true,
+            "isAdmin": false,
+            "isUser": true,
+            "verifyUserId": true 
+        },
+        {
+            "controller": "../components/url/controller/url.js",
+            "route": "/:shortUrl",
+            "method": "get",
+            "action": "redirectToLongUrl",
+            "secured": false,
+            "isAdmin": false,
+            "isUser": false,
+            "verifyUserId": false
+          },
+          {
+              "controller": "../components/blacklist/controller/blacklist.js",
+              "route": "/api/v1/blacklist",
+              "method": "post",
+              "action": "addToBlacklist",
+              "secured": false,
+              "isAdmin": true,
+              "isUser": false,
+              "verifyUserId": false
+            },
+            
+          {
+              "controller": "../components/blacklist/controller/blacklist.js",
+              "route": "/api/v1/blacklist/is-blacklisted",
+              "method": "post",
+              "action": "isBlacklisted",
+              "secured": false,
+              "isAdmin": true,
+              "isUser": false,
+              "verifyUserId": false
+            },
+            
+            {
+                "controller": "../components/blacklist/controller/blacklist.js",
+                "route": "/api/v1/blacklist",
+                "method": "get",
+                "action": "getAllBlacklistedUsers",
+                "secured": false,
+                "isAdmin": true,
+                "isUser": false,
+                "verifyUserId": false
+              },
+            
+              {
+                  "controller": "../components/blacklist/controller/blacklist.js",
+                  "route": "/api/v1/blacklist/:userId",
+                  "method": "delete",
+                  "action": "removeFromBlacklist",
+                  "secured": false,
+                  "isAdmin": true,
+                  "isUser": false,
+                  "verifyUserId": false
+                },
+            
+                {
+                    "controller": "../components/query/controller/query.js",
+                    "route": "/api/v1/user/:userId/query",
+                    "method": "get",
+                    "action": "getMyQueries",
+                    "secured": false,
+                    "isAdmin": false,
+                    "isUser": true,
+                    "verifyUserId": true
+                  },
+            
+                  {
+                      "controller": "../components/query/controller/query.js",
+                      "route": "/api/v1/user/:userId/query",
+                      "method": "post",
+                      "action": "addQuery",
+                      "secured": false,
+                      "isAdmin": false,
+                      "isUser": true,
+                      "verifyUserId": true
+                    },
+            
+                    {
+                        "controller": "../components/query/controller/query.js",
+                        "route": "/api/v1/user/get-queries",
+                        "method": "get",
+                        "action": "getAllQueries",
+                        "secured": false,
+                        "isAdmin": true,
+                        "isUser": false,
+                        "verifyUserId": false
+                      },
+            
+                      {
+                          "controller": "../components/query/controller/query.js",
+                          "route": "/api/v1/user/address-query/:queryId",
+                          "method": "put",
+                          "action": "responseToQuery",
+                          "secured": false,
+                          "isAdmin": true,
+                          "isUser": false,
+                          "verifyUserId": false
+                        },
+            
+                        {
+                            "controller": "../components/transaction/controller/transaction.js",
+                            "route": "/api/v1/user/:userId/transaction",
+                            "method": "post",
+                            "action": "createTransaction",
+                            "secured": false,
+                            "isAdmin": false,
+                            "isUser": true,
+                            "verifyUserId": true
+                          },
+            
+                          {
+                              "controller": "../components/transaction/controller/transaction.js",
+                              "route": "/api/v1/transaction",
+                              "method": "get",
+                              "action": "getAllTransactions",
+                              "secured": false,
+                              "isAdmin": true,
+                              "isUser": false,
+                              "verifyUserId": false
+                            },
+            
+                            {
+                                "controller": "../components/transaction/controller/transaction.js",
+                                "route": "/api/v1/transaction/:transactionId",
+                                "method": "get",
+                                "action": "getTransactionById",
+                                "secured": false,
+                                "isAdmin": true,
+                                "isUser": false,
+                                "verifyUserId": false
+                              },
+            
+                              {
+                                  "controller": "../components/transaction/controller/transaction.js",
+                                  "route": "/api/v1/user/:userId/transaction",
+                                  "method": "get",
+                                  "action": "getMyAllTransactions",
+                                  "secured": false,
+                                  "isAdmin": false,
+                                  "isUser": true,
+                                  "verifyUserId": true
+                                },
+            
+                                {
+                                    "controller": "../components/urlClicks/controller/urlClicks.js",
+                                    "route": "/api/v1/user/:userId/url/:urlId/analyze",
+                                    "method": "get",
+                                    "action": "getAllUrlClicks",
+                                    "secured": false,
+                                    "isAdmin": false,
+                                    "isUser": true,
+                                    "verifyUserId": true
+                                  },
+            
+                                  {
+                                      "controller": "../components/url/controller/url.js",
+                                      "route": "/api/v1/urls",
+                                      "method": "get",
+                                      "action": "getAllUrls",
+                                      "secured": false,
+                                      "isAdmin": true,
+                                      "isUser": false,
+                                      "verifyUserId": false
+                                    }
+                                    ,
+            
+                                  {
+                                      "controller": "../components/url/controller/url.js",
+                                      "route": "/api/v1/get-full-url/:shortUrl",
+                                      "method": "get",
+                                      "action": "getFullUrl", 
+                                      "secured": false,
+                                      "isAdmin": false,
+                                      "isUser": false,
+                                      "verifyUserId": false
+                                    }
+
+
+                                    ,
+            
+                                    {
+                                        "controller": "../components/transaction/controller/transaction.js",
+                                        "route": "/api/v1/user/:userId/revenue",
+                                        "method": "get",
+                                        "action": "getRevenueByUser", 
+                                        "secured": false,
+                                        "isAdmin": true,
+                                        "isUser": false,
+                                        "verifyUserId": false
+                                      }
+
+                                      ,
+            
+                                    {
+                                        "controller": "../components/user/controller/user.js",
+                                        "route": "/api/v1/user/verify-token",
+                                        "method": "post",
+                                        "action": "verifyToken", 
+                                        "secured": false,
+                                        "isAdmin": false,
+                                        "isUser": true,
+                                        "verifyUserId": false
+                                      }
+    ]
+
+}
