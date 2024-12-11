@@ -60,12 +60,6 @@ async  verifyToken(req, res, next)  {
             throw new NotFoundError("user does not exists");
         }
 
-
-        
-
-
-
-        
         if(await bcrypt.compare(password,user.password)){
            const payload = new Payload(user.id,user.isAdmin,user.status);
            

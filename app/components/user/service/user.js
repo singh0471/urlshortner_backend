@@ -17,7 +17,10 @@ class UserService {
 
 
   
-
+constructor(){
+  this.usersPlansService = new UsersPlansService();
+  this.planService = new PlanService();
+}
 
   #associationMap = {
     urls : {
@@ -58,12 +61,10 @@ class UserService {
           
             Logger.info("get user by user name service started");
 
-            const user = await userConfig.model.findOne(
-                {
-                    where : {username:username},
-                },
-                {transaction: t}
-            );
+            const user = await userConfig.model.findOne({
+              where: { username: username },
+              transaction: t,  
+          });
 
             
 
@@ -79,6 +80,36 @@ class UserService {
         }
     }  
 
+
+  //   async getUserByUsername(username, t = null) {
+  //     if (!t) {
+  //         t = await transaction(); // Create a new transaction if one is not passed
+  //     }
+  
+  //     try {
+  //         Logger.info("get user by user name service started");
+  
+          // const user = await userConfig.model.findOne({
+          //     where: { username: username },
+          //     transaction: t,  // Ensure transaction is included
+          // });
+  
+  //         if (!user) {
+  //             Logger.warn(`User with username ${username} not found.`);
+  //             return null; // Explicitly return null if no user is found
+  //         }
+  
+  //         Logger.info("get user by username service completed");
+  //         return user;  // Return the found user
+  
+  //     } catch (error) {
+  //         await t.rollback();  // Rollback if error occurs
+  //         Logger.error(`Error getting user: ${error.message}`);
+  //         throw error;  // Re-throw the error for the calling function to handle
+  //     }
+  // }
+  
+
   
   async createUser(id,username, firstName, lastName, email, password, isAdmin, t) {
     if (!t) {
@@ -87,7 +118,7 @@ class UserService {
 
     try {
       Logger.info("create user service started");
-
+      console.log(id)
       
       const hashedPassword = await bcrypt.hash(password,10);
 
@@ -119,18 +150,21 @@ class UserService {
       );
 
       
-      const usersPlansService = new UsersPlansService();
-      const planService = new PlanService();
+     
 
 
-      const freePlan = await planService.getPlanByName('free');
+      const freePlan = await this.planService.getPlanByName('free');
       console.log("free plan ",freePlan);
       console.log("is admin ",isAdmin);
-      const freePlanId = freePlan.id;
+
+      let freePlanId;
+
+      if(freePlan){
+       freePlanId = freePlan.id;}
       await commit(t);
       
       if(freePlan && !isAdmin){
-        await usersPlansService.buyAllPlans(id,[freePlanId]);
+        await this.usersPlansService.buyAllPlans(id,[freePlanId]);
       }
 
      
