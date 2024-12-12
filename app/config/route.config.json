@@ -374,6 +374,19 @@
                                         "isUser": true,
                                         "verifyUserId": false
                                       }
+
+                                      ,
+            
+                                      {
+                                          "controller": "../components/url/controller/url.js",
+                                          "route": "/api/v1/user/:userId/url/:urlId",
+                                          "method": "delete",
+                                          "action": "deleteUrl", 
+                                          "secured": false,
+                                          "isAdmin": false,
+                                          "isUser": true,
+                                          "verifyUserId": true
+                                        }
     ]
 
 }

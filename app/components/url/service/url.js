@@ -370,6 +370,41 @@ class UrlService {
     }
   }
 
+
+  async deleteUrl(id, t) {
+    if (!t) {
+      t = await transaction();
+    }
+
+    try {
+      Logger.info("delete url service started");
+
+      const url = await urlConfig.model.findByPk(id, { transaction: t });
+
+      if (!url) {
+        throw new NotFoundError(`URL  does not exist.`);
+      }
+
+      const isDeleted = await urlConfig.model.destroy({
+        where: { id },
+        transaction: t,
+      });
+
+      if (isDeleted === 0) {
+        throw new NotFoundError(`Could not delete url`);
+      }
+
+      await commit(t);
+      Logger.info("delete url service completed");
+
+      return isDeleted;
+    } catch (error) {
+      await rollBack(t);
+      Logger.error(error);
+      throw error;
+    }
+  }
+
   
 
 }

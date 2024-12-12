@@ -17,7 +17,9 @@ class UrlController {
     try {
 
       console.log("ngmgfmfgmgyhc ,hhd,c ghc  user")
-      const response = await axios.head(url);   
+      const response = await axios.get(url);   
+
+      
       if (response.status !== 200) {
         throw new InvalidError(`The URL ${url} does not exist or is unreachable.`);
       }
@@ -27,6 +29,7 @@ class UrlController {
   }
 
    
+  
   async createShortUrl(req, res, next) {
     try {
       Logger.info("create short URL controller started");
@@ -198,6 +201,28 @@ class UrlController {
     } catch (error) {
       Logger.error(`Error in get all URLs controller: ${error.message}`);
       next(error);  
+    }
+  }
+
+
+  async deleteUrl(req, res, next) {
+    try {
+      Logger.info("delete url controller started");
+
+      const { urlId } = req.params;
+
+      if (!validateUUID(urlId)) {
+        throw new InvalidError("Invalid plan ID");
+      }
+
+      const response = await this.urlService.deleteUrl(urlId);
+      Logger.info("delete url controller completed");
+
+      res.status(HttpStatusCode.Ok).json({
+        message: `URL with ID ${urlId} has been deleted successfully`,
+      });
+    } catch (error) {
+      next(error);
     }
   }
   
